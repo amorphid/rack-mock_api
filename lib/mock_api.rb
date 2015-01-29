@@ -11,7 +11,8 @@ class MockApi
 
     json_responder.run(request)
 
-    [ 200,
+    [
+      200,
       { "Content-Type" => "application/json" },
       [ request[:response] ]
     ]
