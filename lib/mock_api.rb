@@ -1,6 +1,12 @@
+require "yaml"
+
 class MockApi
   attr_reader :json_responder,
               :request
+
+  YAML.load(File.read("./lib/config/application.yml")).each do |key, value|
+    ENV[key] = value
+  end
 
   def initialize
     @json_responder = JsonResponder.new

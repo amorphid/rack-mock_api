@@ -17,7 +17,7 @@ class JsonResponder
     Net::HTTP.get(URI(uri))
   end
 
-  def set_json
+  def get_and_set_json
     @json = get_json
   end
 
