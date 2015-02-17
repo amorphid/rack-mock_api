@@ -5,6 +5,13 @@ class JsonResponder
               :request,
               :uri
 
+  def cache_uri
+    # path = "./lib/json/uris.txt"
+    file = File.open("./lib/json/uris.txt", "a")
+    file << uri + "\n"
+    file.close
+  end
+
   def cache_json
     dir       = "./lib/json/"
     name      = uri.split("").select { |i| i.match(/(\d|\w)/) }.join
@@ -25,6 +32,7 @@ class JsonResponder
     @request = request
 
     set_uri
+    cache_uri
     get_and_set_json
     cache_json
     set_response
